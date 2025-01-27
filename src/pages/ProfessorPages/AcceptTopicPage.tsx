@@ -18,11 +18,11 @@ import {
 import { useTopics } from "../../context/TopicsContext";
 import { useAuth } from "../../context/AuthContext";
 import { mockUsers } from "../../data/mockUsers";
-import { Thesis, User } from "../../types/types";
+import { User } from "../../types/types";
 import { useNavigate } from "react-router-dom";
 
 const AcceptTopicPage: React.FC = () => {
-  const { topics, updateTopic, deleteTopic } = useTopics();
+  const { topics, updateTopic, deleteTopic, acceptThesis } = useTopics();
   const { isTeacherOrResearcher, currentUser } = useAuth();
   const [selectedTopicId, setSelectedTopicId] = useState<number | "">("");
 
@@ -56,15 +56,7 @@ const AcceptTopicPage: React.FC = () => {
     mockUsers.find((u) => u.id === userId);
 
   const handleAccept = (thesisId: number, studentId: number) => {
-    const thesisToEdit = topics.find((t) => t.id === thesisId);
-    const updatedTopic: Thesis = {
-      ...thesisToEdit!,
-      authorId: studentId,
-      supervisorId: currentUser?.id,
-      status: "Accepted",
-      studentsApplications: [],
-    };
-    updateTopic(updatedTopic);
+    acceptThesis(thesisId, currentUser!.id);
 
     // Remove the student's applications from other theses
     const otherTopics = topics.filter((t) => t.id !== thesisId);
@@ -85,10 +77,10 @@ const AcceptTopicPage: React.FC = () => {
       (t) => t.proposedBy === studentId
     );
     studentProposedTopics.forEach((topic) => {
-      deleteTopic(topic.id);
+      if (topic.id !== thesisId) deleteTopic(topic.id);
     });
     alert("Tema a fost acceptata cu succes!");
-    navigate(`/thesis-details/${thesisId}`);
+    //navigate(`/thesis-details/${thesisId}`);
   };
 
   const handleThesisDetails = (id: number): void => {
