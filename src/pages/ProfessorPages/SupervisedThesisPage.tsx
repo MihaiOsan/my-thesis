@@ -7,9 +7,9 @@ import {
   Box,
   Pagination,
 } from "@mui/material";
-import ThesisCard from "../components/ThesisCard";
-import { useTopics } from "../context/TopicsContext";
-import { useAuth } from "../context/AuthContext";
+import ThesisCard from "../../components/ThesisCard";
+import { useTopics } from "../../context/TopicsContext";
+import { useAuth } from "../../context/AuthContext";
 
 const SupervisedThesisPage: React.FC = () => {
   const { topics } = useTopics();
@@ -35,9 +35,7 @@ const SupervisedThesisPage: React.FC = () => {
 
   const supervisedTheses = topics.filter(
     (thesis) =>
-      (thesis.status === "Accepted" ||
-        thesis.status === "In Progress" ||
-        thesis.status === "Completed") &&
+      (thesis.status === "Accepted" || thesis.status === "In Progress") &&
       thesis.supervisorId === currentUser?.id
   );
 
@@ -70,24 +68,35 @@ const SupervisedThesisPage: React.FC = () => {
 
   return (
     <Container sx={{ marginTop: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
+      <Typography variant="h4" gutterBottom textAlign="left">
         Lucrări Coordonate
       </Typography>
 
-      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: 4 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 2,
+          marginBottom: 4,
+          justifyContent: "center",
+        }}
+      >
+        {/* Search bar */}
         <TextField
           label="Căutare..."
           variant="outlined"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          sx={{ width: "100%", maxWidth: 400 }}
+          sx={{
+            flex: "2 1 300px", // Flexibil cu lățime minimă
+          }}
         />
       </Box>
 
       <Grid container spacing={2} justifyContent="center">
         {displayedTheses.map((thesis) => (
           <Grid item xs={12} sm={6} md={4} key={thesis.id}>
-            <ThesisCard thesis={thesis} userRole={""} />
+            <ThesisCard thesis={thesis} />
           </Grid>
         ))}
       </Grid>

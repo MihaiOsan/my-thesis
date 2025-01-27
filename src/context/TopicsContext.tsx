@@ -10,6 +10,7 @@ interface TopicsContextProps {
   evaluateThesis: (id: number, grade: number, feedback: string) => void;
   acceptThesis: (id: number, idProf: number) => void;
   updateTopic: (newThesis: Thesis) => void;
+  deleteTopic: (id: number) => void;
 }
 
 const TopicsContext = createContext<TopicsContextProps | undefined>(undefined);
@@ -88,6 +89,10 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
+  const deleteTopic = (id: number) => {
+    setTopics((prev) => prev.filter((t) => t.id !== id));
+  };
+
   // returnăm totul în context
   return (
     <TopicsContext.Provider
@@ -98,6 +103,7 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
         evaluateThesis,
         acceptThesis,
         updateTopic,
+        deleteTopic,
       }}
     >
       {children}

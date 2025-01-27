@@ -14,9 +14,9 @@ import {
   Card,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useTopics } from "../context/TopicsContext";
-import { useAuth } from "../context/AuthContext";
-import { mockUsers } from "../data/mockUsers";
+import { useTopics } from "../../context/TopicsContext";
+import { useAuth } from "../../context/AuthContext";
+import { mockUsers } from "../../data/mockUsers";
 
 const AssignedThesisPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,6 +29,16 @@ const AssignedThesisPage: React.FC = () => {
     () => mockUsers.find((u) => u.id === thesis?.supervisorId),
     [thesis?.supervisorId]
   );
+
+  if (!currentUser) {
+    return (
+      <Container sx={{ marginTop: 4 }}>
+        <Typography variant="h4" gutterBottom align="center">
+          Acces interzis
+        </Typography>
+      </Container>
+    );
+  }
 
   if (!thesis) {
     return (

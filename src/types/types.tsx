@@ -20,32 +20,16 @@ export interface Thesis {
   id: number;
   title: string;
   description: string;
-
-  // ID-ul utilizatorului care a creat/propus tema
   authorId?: number;
-
-  // ID-ul unui user cu rol teacher/researcher (dacă există)
   supervisorId?: number;
-
-  // Nivelul lucrării (Licență, Masterat, Doctorat)
   level: "Undergraduate" | "Masters" | "PhD";
-
-  // Data propunerii temei
+  proposedBy: number;
   proposalDate: Date;
-
   imageUrl?: string;
-
-  // Termenul limită estimat
   dueDate?: Date;
-
   studentsApplications?: number[];
-
-  // Lista de tehnologii necesare
   requiredTechnologies?: string[];
-
-  // Cunoștințe necesare (de ex. "Python", "Machine Learning")
   prerequisites?: string[];
-
   status:
     | "Proposed"
     | "Accepted"
@@ -55,12 +39,13 @@ export interface Thesis {
     | "Graded";
   documents?: UploadedDocument[];
   evaluation?: ThesisEvaluation | null;
+  proposedTo?: number;
 }
 
 export interface ThesisEvaluation {
   grade: number;
   feedback: string;
-  evaluationDate: Date; // Data evaluării
+  evaluationDate: Date;
 }
 
 export interface UploadedDocument {

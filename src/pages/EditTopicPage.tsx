@@ -88,6 +88,16 @@ const EditTopicPage: React.FC = () => {
     navigate(`/thesis-details/${thesisId}`);
   };
 
+  if (!currentUser) {
+    return (
+      <Container sx={{ marginTop: 4 }}>
+        <Typography variant="h4" gutterBottom align="center">
+          Acces interzis
+        </Typography>
+      </Container>
+    );
+  }
+
   return (
     <Container sx={{ marginTop: 4 }}>
       <Card elevation={3} sx={{ maxWidth: 700, margin: "0 auto", padding: 2 }}>

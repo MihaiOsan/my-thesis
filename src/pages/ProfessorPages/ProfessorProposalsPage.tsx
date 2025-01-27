@@ -7,9 +7,9 @@ import {
   Box,
   Pagination,
 } from "@mui/material";
-import ThesisCard from "../components/ThesisCard";
-import { useTopics } from "../context/TopicsContext";
-import { useAuth } from "../context/AuthContext";
+import ThesisCard from "../../components/ThesisCard";
+import { useTopics } from "../../context/TopicsContext";
+import { useAuth } from "../../context/AuthContext";
 
 const ProfessorProposalsPage: React.FC = () => {
   const { topics } = useTopics();
@@ -53,10 +53,18 @@ const ProfessorProposalsPage: React.FC = () => {
   ) => {
     setCurrentPage(value);
   };
-
+  if (!currentUser) {
+    return (
+      <Container sx={{ marginTop: 4 }}>
+        <Typography variant="h4" gutterBottom align="center">
+          Acces interzis
+        </Typography>
+      </Container>
+    );
+  }
   return (
     <Container sx={{ marginTop: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
+      <Typography variant="h4" gutterBottom textAlign="left">
         Temele Propuse
       </Typography>
       {/* Flex container adaptabil */}
@@ -85,7 +93,7 @@ const ProfessorProposalsPage: React.FC = () => {
       <Grid container spacing={2} justifyContent="center">
         {displayedTopics.map((topic) => (
           <Grid item xs={12} sm={6} md={4} key={topic.id}>
-            <ThesisCard thesis={topic} userRole={currentUser?.role || ""} />
+            <ThesisCard thesis={topic} />
           </Grid>
         ))}
       </Grid>

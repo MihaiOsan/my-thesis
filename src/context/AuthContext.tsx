@@ -2,7 +2,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { User } from "../types/types";
 import { mockUsers } from "../data/mockUsers";
-import { Navigate, useNavigate } from "react-router-dom";
 
 interface AuthContextProps {
   currentUser: User | null;

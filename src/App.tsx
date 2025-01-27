@@ -21,19 +21,19 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 import HomePage from "./pages/HomePage";
 import ProposeTopicPage from "./pages/ProposeTopicPage";
-import AcceptTopicPage from "./pages/AcceptTopicPage";
-import SupervisedThesisPage from "./pages/SupervisedThesisPage";
-import EvaluateThesisPage from "./pages/EvaluateThesisPage";
+import AcceptTopicPage from "./pages/ProfessorPages/AcceptTopicPage";
+import SupervisedThesisPage from "./pages/ProfessorPages/SupervisedThesisPage";
+import EvaluateThesisPage from "./pages/ProfessorPages/EvaluateThesisPage";
 import LoginPage from "./pages/LoginPage";
 
 import { TopicsProvider, useTopics } from "./context/TopicsContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import SignUpPage from "./pages/SignUpPage";
 import ThesisDetailsPage from "./pages/ThesisDetailsPage";
-import ProfessorProposalsPage from "./pages/ProfessorProposalsPage";
+import ProfessorProposalsPage from "./pages/ProfessorPages/ProfessorProposalsPage";
 import AboutPage from "./pages/AboutPage";
-import AssignedThesisPage from "./pages/AssignedThesisPage";
 import EditTopicPage from "./pages/EditTopicPage";
+import GradesPage from "./pages/StudentPages/GradesPage";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -55,7 +55,11 @@ function App() {
     const { topics } = useTopics();
 
     const userAssignedThesis = topics.find(
-      (topic) => topic.authorId === currentUser?.id && topic.supervisorId
+      (topic) =>
+        topic.authorId === currentUser?.id &&
+        topic.supervisorId &&
+        topic.status !== "Completed" &&
+        topic.status !== "Graded"
     );
 
     const renderMenuItems = () => (
@@ -65,11 +69,11 @@ function App() {
         </ListItem>
 
         <ListItem component={Link} to="/" button>
-          <ListItemText primary="Teme" />
+          <ListItemText primary="Lucrări" />
         </ListItem>
         {currentUser?.role === "student" && (
           <>
-            {userAssignedThesis && (
+            {!userAssignedThesis && (
               <ListItem component={Link} to="/propose-topic" button>
                 <ListItemText primary="Propune Temă" />
               </ListItem>
@@ -83,6 +87,9 @@ function App() {
                 <ListItemText primary="Tema Mea" />
               </ListItem>
             )}
+            <ListItem component={Link} to="/grades" button>
+              <ListItemText primary="Note" />
+            </ListItem>
           </>
         )}
         {(currentUser?.role === "teacher" ||
@@ -92,7 +99,7 @@ function App() {
               <ListItemText primary="Lucrări Coordonate" />
             </ListItem>
             <ListItem component={Link} to="/professor-proposals" button>
-              <ListItemText primary="Teme Propuse" />
+              <ListItemText primary="Lucrări Propuse" />
             </ListItem>
             <ListItem component={Link} to="/propose-topic" button>
               <ListItemText primary="Propune Temă" />
@@ -127,7 +134,7 @@ function App() {
               Acasa
             </Button>
             <Button color="inherit" component={Link} to="/">
-              Teme
+              Lucrări
             </Button>
             {currentUser?.role === "student" && (
               <>
@@ -145,6 +152,9 @@ function App() {
                     Tema mea
                   </Button>
                 )}
+                <Button color="inherit" component={Link} to="/grades">
+                  Note
+                </Button>
               </>
             )}
             {(currentUser?.role === "teacher" ||
@@ -162,14 +172,14 @@ function App() {
                   component={Link}
                   to="/professor-proposals"
                 >
-                  Teme Propuse
+                  Lucrări Propuse
                 </Button>
 
                 <Button color="inherit" component={Link} to="/propose-topic">
                   Propune Temă
                 </Button>
                 <Button color="inherit" component={Link} to="/accept-topic">
-                  Acceptă Temă
+                  Acceptă Lucrare
                 </Button>
                 <Button color="inherit" component={Link} to="/evaluate">
                   Evaluează
@@ -233,6 +243,7 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/propose-topic" element={<ProposeTopicPage />} />
                 <Route path="/accept-topic" element={<AcceptTopicPage />} />
+                <Route path="/grades" element={<GradesPage />} />
                 <Route
                   path="/professor-proposals"
                   element={<ProfessorProposalsPage />}

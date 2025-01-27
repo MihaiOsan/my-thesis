@@ -7,8 +7,9 @@ export const mockTheses: Thesis[] = [
     description: "Proiect de licență, implementare sistem de recomandări.",
     authorId: 2, // Alexandru Ionescu
     supervisorId: 4, // Nu poate avea coordonator în starea "Proposed"
+    proposedBy: 4,
     imageUrl: "https://drmcnatty.com/wp-content/uploads/2024/10/AI2.webp",
-    status: "In Progress",
+    status: "Graded",
     documents: [
       {
         id: 1,
@@ -33,14 +34,20 @@ export const mockTheses: Thesis[] = [
     proposalDate: new Date("2025-01-01"),
     requiredTechnologies: ["Python", "TensorFlow", "Docker"],
     prerequisites: ["AI Basics", "Data Science"],
+    evaluation: {
+      grade: 9,
+      evaluationDate: new Date("2025-01-01"),
+      feedback: "good",
+    },
   },
   {
     id: 102,
     title: "Analiza Big Data pentru e-learning",
     description:
       "Disertație care investighează tehnici de big data aplicate în platformele de e-learning pentru personalizarea conținutului.",
-    authorId: undefined, // Elena Radu
-    supervisorId: 4, // Nu poate avea coordonator în starea "Proposed"
+    authorId: undefined,
+    supervisorId: 4,
+    proposedBy: 4,
     status: "Proposed",
     imageUrl:
       "https://ailleron.com/wp-content/uploads/2024/01/big-data-in-banking.jpg",
@@ -56,6 +63,7 @@ export const mockTheses: Thesis[] = [
     description: "Aplicații de clasificare imagini, rețele convoluționale.",
     authorId: 2,
     supervisorId: 1,
+    proposedBy: 2,
     status: "Accepted",
     documents: [
       {
@@ -78,8 +86,9 @@ export const mockTheses: Thesis[] = [
     id: 114,
     title: "Optimizarea proceselor industriale cu algoritmi genetici",
     description: "Explorarea metodelor de optimizare în producție.",
-    authorId: 3, // Studentul Elena Radu
-    supervisorId: 2, // Profesorul Mihai Popescu
+    authorId: 5, // Studentul Elena Radu
+    supervisorId: 4, // Profesorul Mihai Popescu
+    proposedBy: 4,
     status: "In Progress",
     documents: [],
     level: "Masters",
@@ -91,14 +100,15 @@ export const mockTheses: Thesis[] = [
     id: 115,
     title: "Simularea fluxurilor de trafic urban",
     description: "Modelarea și simularea traficului urban pentru orașe smart.",
-    authorId: undefined, // Studentul Alexandru Ionescu
-    supervisorId: 1,
+    authorId: 9,
+    proposedBy: 9,
     status: "Proposed",
     documents: [],
     level: "Undergraduate",
     proposalDate: new Date("2025-02-01"),
     requiredTechnologies: ["AnyLogic", "Python", "GIS"],
     prerequisites: ["Simulation Basics", "Transportation Engineering"],
+    proposedTo: 4,
   },
   {
     id: 116,
@@ -107,6 +117,7 @@ export const mockTheses: Thesis[] = [
       "Disertație care investighează modele de predicție pentru piața de capital.",
     authorId: undefined,
     supervisorId: 7,
+    proposedBy: 7,
     status: "Proposed",
     documents: [],
     level: "Masters",
@@ -121,6 +132,7 @@ export const mockTheses: Thesis[] = [
       "Proiect de cercetare pentru procesarea în timp real a fluxurilor video.",
     authorId: undefined,
     supervisorId: 10,
+    proposedBy: 10,
     status: "Proposed",
     documents: [],
     level: "Masters",
@@ -135,8 +147,9 @@ export const mockTheses: Thesis[] = [
       "Studiu asupra aplicării dispozitivelor IoT pentru colectarea datelor de mediu.",
     authorId: undefined,
     supervisorId: 4,
+    proposedBy: 4,
     status: "Proposed",
-
+    studentsApplications: [3, 5],
     documents: [],
     level: "Undergraduate",
     proposalDate: new Date("2025-07-20"),
@@ -150,6 +163,7 @@ export const mockTheses: Thesis[] = [
       "Explorarea tehnicilor de clustering aplicate datelor din domeniul biologiei computaționale.",
     authorId: undefined,
     supervisorId: 10,
+    proposedBy: 10,
     status: "Proposed",
     documents: [],
     level: "PhD",
@@ -163,6 +177,7 @@ export const mockTheses: Thesis[] = [
     description: "Proiect de cercetare care investighează frauda online.",
     authorId: undefined,
     supervisorId: 7,
+    proposedBy: 7,
     status: "Proposed",
     documents: [],
     level: "Masters",
@@ -176,6 +191,7 @@ export const mockTheses: Thesis[] = [
     description: "Proiect ce explorează optimizarea livrărilor folosind AI.",
     authorId: undefined,
     supervisorId: 4,
+    proposedBy: 4,
     status: "Proposed",
     documents: [],
     level: "Masters",

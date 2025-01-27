@@ -6,7 +6,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 
 const AboutPage: React.FC = () => {
   return (
-    <Container sx={{ mt: 6, mb: 6 }}>
+    <Container sx={{ mt: 6, mb: 6, paddingBottom: "20px" }}>
       {/* Background Image Section */}
       <Box
         sx={{

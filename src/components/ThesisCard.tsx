@@ -14,10 +14,9 @@ import { useNavigate } from "react-router-dom";
 
 interface ThesisCardProps {
   thesis: Thesis;
-  userRole: string; // "student" sau "teacher"
 }
 
-const ThesisCard: React.FC<ThesisCardProps> = ({ thesis, userRole }) => {
+const ThesisCard: React.FC<ThesisCardProps> = ({ thesis }) => {
   const navigate = useNavigate();
 
   // Găsim studentul (autorul) și coordonatorul

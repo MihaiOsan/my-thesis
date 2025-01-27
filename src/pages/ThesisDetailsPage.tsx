@@ -18,13 +18,15 @@ import { useAuth } from "../context/AuthContext";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import DoDisturbIcon from "@mui/icons-material/DoDisturb";
+import PageviewIcon from "@mui/icons-material/Pageview";
 import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
+import BackspaceIcon from "@mui/icons-material/Backspace";
+import { Thesis } from "../types/types";
 
 const ThesisDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { topics, applyForThesis, acceptThesis, deleteThesis } = useTopics();
+  const { topics, updateTopic, acceptThesis, deleteTopic } = useTopics();
   const { currentUser } = useAuth();
 
   const thesisId = Number(id);
@@ -47,8 +49,28 @@ const ThesisDetailsPage: React.FC = () => {
 
   // Functions for buttons
   const handleApply = () => {
-    applyForThesis(thesis.id, currentUser!.id);
-    alert("Te-ai înscris pentru această lucrare.");
+    if (!thesis) {
+      alert("Tema nu a fost găsită.");
+      return;
+    }
+
+    // Verifici dacă utilizatorul curent este deja în lista de așteptare
+    if (!thesis.studentsApplications?.includes(currentUser!.id)) {
+      // Creezi o nouă versiune a obiectului temei cu utilizatorul adăugat în lista de așteptare
+      const updatedThesis: Thesis = {
+        ...thesis,
+        studentsApplications: [
+          ...(thesis.studentsApplications || []),
+          currentUser!.id,
+        ],
+      };
+
+      // Apelezi updateTopic pentru a actualiza tema
+      updateTopic(updatedThesis);
+      alert("Te-ai înscris pentru această lucrare.");
+    } else {
+      alert("Ești deja în lista de așteptare pentru această lucrare.");
+    }
   };
 
   const handleAccept = () => {
@@ -61,8 +83,11 @@ const ThesisDetailsPage: React.FC = () => {
   };
 
   const handleDelete = () => {
-    deleteThesis(thesis.id);
-    alert("Function not implemented.");
+    const confirmed = window.confirm("Sigur doriți să ștergeți această temă?");
+    if (confirmed) {
+      deleteTopic(thesis.id);
+      alert("Tema a fost ștearsă.");
+    }
   };
 
   const handleUploadDocuments = () => {
@@ -70,17 +95,55 @@ const ThesisDetailsPage: React.FC = () => {
     throw new Error("Function not implemented.");
   };
 
-  function handleTurnPaper(
-    event: MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    throw new Error("Function not implemented.");
-  }
+  const handleTurnPaper = (): void => {
+    const confirmed = window.confirm(
+      "Sigur doriți să predați această lucrare? Acțiunea este ireversibilă (momentan)"
+    );
+    if (confirmed) {
+      if (!thesis) {
+        alert("Tema nu a fost găsită.");
+        return;
+      }
+      if (thesis.authorId === currentUser!.id) {
+        const updatedThesis: Thesis = {
+          ...thesis,
+          status: "Completed",
+        };
 
-  function handleUnassign(
-    event: MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    throw new Error("Function not implemented.");
-  }
+        // Apelezi updateTopic pentru a actualiza tema
+        updateTopic(updatedThesis);
+        alert("Lucrarea a fost predată cu succes");
+      } else {
+        alert("S-a produs o eroare!");
+      }
+    }
+  };
+
+  const handleUnassign = (): void => {
+    const confirmed = window.confirm(
+      "Sigur doriți să renunțați la această lucrare? Acțiunea este ireversibilă ducând la ștergerea temei (dacă este propusă de student) sau la redeschiderea ei (propusă de profesor)."
+    );
+    if (confirmed) {
+      if (!thesis) {
+        alert("Tema nu a fost găsită.");
+        return;
+      }
+      if (thesis.supervisorId === thesis.proposedBy) {
+        const updatedThesis: Thesis = {
+          ...thesis,
+          status: "Proposed",
+          authorId: undefined,
+        };
+
+        // Apelezi updateTopic pentru a actualiza tema
+        updateTopic(updatedThesis);
+        alert("Lucrarea a fost redeschisă cu succes!");
+      } else {
+        deleteTopic(thesis.id);
+        alert("Lucrarea a fost ștearsă!");
+      }
+    }
+  };
 
   return (
     <Container sx={{ marginTop: 4 }}>
@@ -213,6 +276,7 @@ const ThesisDetailsPage: React.FC = () => {
                       size="small"
                       href={doc.url}
                       target="_blank"
+                      startIcon={<PageviewIcon />}
                       sx={{ marginLeft: 2 }}
                     >
                       Vizualizează
@@ -259,19 +323,19 @@ const ThesisDetailsPage: React.FC = () => {
                   variant="outlined"
                   color="error"
                   onClick={handleUnassign}
-                  startIcon={<DeleteIcon />}
+                  startIcon={<BackspaceIcon />}
                   sx={{
                     paddingX: 3,
                     fontSize: "1rem",
                   }}
                 >
-                  Șterge
+                  Schimbă lucrarea
                 </Button>
               )}
 
             {/* Celelalte butoane în partea dreaptă */}
             <Box sx={{ display: "flex", gap: 2 }}>
-              {currentUser?.role === "student" && !thesis.supervisorId && (
+              {currentUser?.role === "student" && !thesis.authorId && (
                 <Button
                   variant="contained"
                   color="primary"
@@ -282,7 +346,7 @@ const ThesisDetailsPage: React.FC = () => {
                     fontSize: "1rem",
                   }}
                 >
-                  Aplica
+                  Aplică
                 </Button>
               )}
 

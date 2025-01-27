@@ -52,6 +52,7 @@ const ProposeTopicPage: React.FC = () => {
           : undefined,
       status: "Proposed",
       level,
+      proposedBy: currentUser!.id,
       requiredTechnologies: technologies.split(",").map((tech) => tech.trim()),
       prerequisites: prerequisites.split(",").map((prereq) => prereq.trim()),
       imageUrl:
@@ -69,6 +70,16 @@ const ProposeTopicPage: React.FC = () => {
     setPrerequisites("");
     setImageUrl("");
   };
+
+  if (!currentUser) {
+    return (
+      <Container sx={{ marginTop: 4 }}>
+        <Typography variant="h4" gutterBottom align="center">
+          Acces interzis
+        </Typography>
+      </Container>
+    );
+  }
 
   return (
     <Container sx={{ marginTop: 4 }}>

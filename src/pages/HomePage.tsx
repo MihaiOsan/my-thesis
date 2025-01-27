@@ -13,12 +13,10 @@ import {
 } from "@mui/material";
 import ThesisCard from "../components/ThesisCard";
 import { useTopics } from "../context/TopicsContext";
-import { useAuth } from "../context/AuthContext";
 import { Thesis } from "../types/types";
 
 const HomePage: React.FC = () => {
   const { topics } = useTopics();
-  const { currentUser } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [proposedByFilter, setProposedByFilter] = useState<
@@ -79,7 +77,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Container sx={{ marginTop: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
+      <Typography variant="h4" gutterBottom textAlign="left">
         Teme Disponibile
       </Typography>
 
@@ -131,7 +129,7 @@ const HomePage: React.FC = () => {
       <Grid container spacing={2} justifyContent="center">
         {displayedTopics.map((topic) => (
           <Grid item xs={12} sm={6} md={4} key={topic.id}>
-            <ThesisCard thesis={topic} userRole={currentUser?.role || ""} />
+            <ThesisCard thesis={topic} />
           </Grid>
         ))}
       </Grid>

@@ -13,9 +13,9 @@ import {
   Stack,
   Box,
 } from "@mui/material";
-import { useTopics } from "../context/TopicsContext";
-import { useAuth } from "../context/AuthContext";
-import { Thesis } from "../types/types";
+import { useTopics } from "../../context/TopicsContext";
+import { useAuth } from "../../context/AuthContext";
+import { Thesis } from "../../types/types";
 
 const EvaluateThesisPage: React.FC = () => {
   const { topics, evaluateThesis } = useTopics();
