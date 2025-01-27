@@ -80,7 +80,7 @@ const AcceptTopicPage: React.FC = () => {
       if (topic.id !== thesisId) deleteTopic(topic.id);
     });
     alert("Tema a fost acceptata cu succes!");
-    //navigate(`/thesis-details/${thesisId}`);
+    navigate(`/thesis-details/${thesisId}`);
   };
 
   const handleThesisDetails = (id: number): void => {
@@ -104,9 +104,6 @@ const AcceptTopicPage: React.FC = () => {
         <Grid container spacing={2}>
           {studentIds.map((studentId) => {
             const studentUser = findUserById(studentId);
-            function notImplemented(): void {
-              throw new Error("Function not implemented.");
-            }
 
             return (
               <Grid item xs={12} sm={6} md={4} key={studentId}>
@@ -138,7 +135,7 @@ const AcceptTopicPage: React.FC = () => {
                       variant="outlined"
                       size="small"
                       sx={{ mt: 2, width: "100%" }}
-                      onClick={() => notImplemented()}
+                      onClick={() => handleStudentDetails(studentUser!.id)}
                     >
                       Detalii
                     </Button>

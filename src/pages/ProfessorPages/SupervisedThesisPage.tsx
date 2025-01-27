@@ -36,7 +36,8 @@ const SupervisedThesisPage: React.FC = () => {
   const supervisedTheses = topics.filter(
     (thesis) =>
       (thesis.status === "Accepted" || thesis.status === "In Progress") &&
-      thesis.supervisorId === currentUser?.id
+      thesis.supervisorId === currentUser?.id &&
+      thesis.authorId
   );
 
   const filteredTheses = supervisedTheses.filter((thesis) => {
