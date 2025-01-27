@@ -11,6 +11,7 @@ import {
   Box,
   Paper,
   Button,
+  Card,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useTopics } from "../context/TopicsContext";
@@ -114,16 +115,43 @@ const AssignedThesisPage: React.FC = () => {
               </Stack>
             </>
           )}
-          <Box sx={{ marginTop: 2, textAlign: "right" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              href={thesis.documentationLink || "#"}
-              target="_blank"
+          {thesis.documents?.map((doc) => (
+            <Card
+              key={doc.id}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                padding: 2,
+                boxShadow: 2,
+                borderRadius: 2,
+              }}
             >
-              Descarcă Documentația
-            </Button>
-          </Box>
+              <Box sx={{ flex: "1 1 auto" }}>
+                <Typography variant="h6" gutterBottom>
+                  {doc.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                  {doc.description}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Încărcat de userul cu ID {doc.uploadedBy} la{" "}
+                  {doc.uploadedAt.toLocaleDateString()}
+                </Typography>
+              </Box>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  href={doc.url}
+                  target="_blank"
+                  sx={{ marginLeft: 2 }}
+                >
+                  Vizualizează
+                </Button>
+              </Box>
+            </Card>
+          ))}
         </Box>
       </Paper>
     </Container>

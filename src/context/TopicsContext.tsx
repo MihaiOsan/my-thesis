@@ -9,6 +9,7 @@ interface TopicsContextProps {
   acceptTopic: (id: number) => void;
   evaluateThesis: (id: number, grade: number, feedback: string) => void;
   acceptThesis: (id: number, idProf: number) => void;
+  updateTopic: (newThesis: Thesis) => void;
 }
 
 const TopicsContext = createContext<TopicsContextProps | undefined>(undefined);
@@ -66,10 +67,21 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
               evaluation: {
                 grade,
                 feedback,
-                evaluatorId: 123, // adaugă un ID valid
-                evaluationDate: new Date(), // adaugă o dată curentă
+                evaluationDate: new Date(),
               },
-              status: "Completed",
+              status: "Graded",
+            }
+          : t
+      )
+    );
+  };
+
+  const updateTopic = (newThesis: Thesis) => {
+    setTopics((prev) =>
+      prev.map((t) =>
+        t.id === newThesis.id
+          ? {
+              ...newThesis,
             }
           : t
       )
@@ -79,7 +91,14 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
   // returnăm totul în context
   return (
     <TopicsContext.Provider
-      value={{ topics, addTopic, acceptTopic, evaluateThesis, acceptThesis }}
+      value={{
+        topics,
+        addTopic,
+        acceptTopic,
+        evaluateThesis,
+        acceptThesis,
+        updateTopic,
+      }}
     >
       {children}
     </TopicsContext.Provider>

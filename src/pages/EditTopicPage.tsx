@@ -18,18 +18,17 @@ import {
 import { useTopics } from "../context/TopicsContext";
 import { useAuth } from "../context/AuthContext";
 import { Thesis } from "../types/types";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const EditTopicPage: React.FC = () => {
   const { topics, updateTopic } = useTopics();
   const { currentUser } = useAuth();
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const thesisId = Number(id);
 
   const thesisToEdit = topics.find((t) => t.id === thesisId);
-
-  console.log(thesisToEdit);
 
   const [title, setTitle] = useState(thesisToEdit?.title || "");
   const [description, setDescription] = useState(
@@ -56,6 +55,19 @@ const EditTopicPage: React.FC = () => {
       return;
     }
 
+    if (
+      !(
+        currentUser &&
+        ((currentUser.id === thesisToEdit?.authorId &&
+          !thesisToEdit.supervisorId) ||
+          (currentUser.id === thesisToEdit?.supervisorId &&
+            !thesisToEdit.authorId))
+      )
+    ) {
+      alert("Tema nu se poate modifica!");
+      return;
+    }
+
     const updatedTopic: Thesis = {
       ...thesisToEdit!,
       title,
@@ -64,10 +76,16 @@ const EditTopicPage: React.FC = () => {
       requiredTechnologies: technologies.split(",").map((tech) => tech.trim()),
       prerequisites: prerequisites.split(",").map((prereq) => prereq.trim()),
       imageUrl,
+      documents: keepDocuments ? thesisToEdit?.documents : [],
     };
 
-    updateTopic(updatedTopic, keepDocuments);
+    updateTopic(updatedTopic);
     alert("Tema a fost actualizată cu succes!");
+    navigate(`/thesis-details/${thesisId}`);
+  };
+
+  const handleCancel = () => {
+    navigate(`/thesis-details/${thesisId}`);
   };
 
   return (
@@ -154,14 +172,24 @@ const EditTopicPage: React.FC = () => {
             />
           </Stack>
 
-          <Button
-            variant="contained"
-            sx={{ mt: 4, px: 4, py: 1 }}
-            fullWidth
-            onClick={handleSave}
-          >
-            Salvează Modificările
-          </Button>
+          <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
+            <Button
+              variant="contained"
+              onClick={handleSave}
+              sx={{ px: 4, py: 1 }}
+              fullWidth
+            >
+              Salvează Modificările
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={handleCancel}
+              sx={{ px: 4, py: 1 }}
+              fullWidth
+            >
+              Anulează
+            </Button>
+          </Stack>
         </CardContent>
       </Card>
     </Container>

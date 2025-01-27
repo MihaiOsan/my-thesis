@@ -46,7 +46,13 @@ export interface Thesis {
   // Cunoștințe necesare (de ex. "Python", "Machine Learning")
   prerequisites?: string[];
 
-  status: "Proposed" | "Accepted" | "In Progress" | "Completed" | "Cancelled";
+  status:
+    | "Proposed"
+    | "Accepted"
+    | "In Progress"
+    | "Completed"
+    | "Cancelled"
+    | "Graded";
   documents?: UploadedDocument[];
   evaluation?: ThesisEvaluation | null;
 }
@@ -54,7 +60,6 @@ export interface Thesis {
 export interface ThesisEvaluation {
   grade: number;
   feedback: string;
-  evaluatorId: number; // ID-ul utilizatorului care a efectuat evaluarea
   evaluationDate: Date; // Data evaluării
 }
 
