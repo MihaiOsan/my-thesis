@@ -12,10 +12,13 @@ import {
   CardContent,
   Stack,
   Box,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 import { useTopics } from "../context/TopicsContext";
 import { useAuth } from "../context/AuthContext";
 import { Thesis } from "../types/types";
+import { mockUsers } from "../data/mockUsers"; // Presupunem că mockUsers conține o listă de utilizatori
 
 const ProposeTopicPage: React.FC = () => {
   const { addTopic } = useTopics();
@@ -29,6 +32,14 @@ const ProposeTopicPage: React.FC = () => {
   const [technologies, setTechnologies] = useState("");
   const [prerequisites, setPrerequisites] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [sendToProfessor, setSendToProfessor] = useState(false);
+  const [selectedProfessorId, setSelectedProfessorId] = useState<number | "">(
+    ""
+  );
+
+  const professors = mockUsers.filter(
+    (user) => user.role === "teacher" /*|| user.role === "researcher"*/
+  );
 
   const handlePropose = () => {
     if (
@@ -60,6 +71,11 @@ const ProposeTopicPage: React.FC = () => {
           ? imageUrl
           : "https://crc.losrios.edu/crc/main/img/body-misc/3-academics/cac/business-and-computer-science-body.png",
       proposalDate: new Date(),
+      proposedTo: sendToProfessor
+        ? Number(selectedProfessorId)
+          ? Number(selectedProfessorId)
+          : undefined
+        : undefined,
     };
 
     addTopic(newTopic);
@@ -69,6 +85,8 @@ const ProposeTopicPage: React.FC = () => {
     setTechnologies("");
     setPrerequisites("");
     setImageUrl("");
+    setSendToProfessor(false);
+    setSelectedProfessorId("");
   };
 
   if (!currentUser) {
@@ -163,6 +181,38 @@ const ProposeTopicPage: React.FC = () => {
               onChange={(e) => setImageUrl(e.target.value)}
               fullWidth
             />
+
+            {/* Secțiunea 4: Trimite lucrarea unui profesor */}
+            {currentUser?.role === "student" && (
+              <Box>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={sendToProfessor}
+                      onChange={(e) => setSendToProfessor(e.target.checked)}
+                    />
+                  }
+                  label="Trimit lucrarea unui profesor"
+                />
+                {sendToProfessor && (
+                  <FormControl fullWidth sx={{ mt: 2 }}>
+                    <InputLabel>Selectează Profesor</InputLabel>
+                    <Select
+                      value={selectedProfessorId}
+                      onChange={(e) =>
+                        setSelectedProfessorId(Number(e.target.value))
+                      }
+                    >
+                      {professors.map((prof) => (
+                        <MenuItem key={prof.id} value={prof.id}>
+                          {prof.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                )}
+              </Box>
+            )}
           </Stack>
 
           <Button
