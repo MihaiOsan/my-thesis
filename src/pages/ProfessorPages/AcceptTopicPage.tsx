@@ -17,8 +17,6 @@ import {
 } from "@mui/material";
 import { useTopics } from "../../context/TopicsContext";
 import { useAuth } from "../../context/AuthContext";
-import { mockUsers } from "../../data/mockUsers";
-import { User } from "../../types/types";
 import { useNavigate } from "react-router-dom";
 
 const AcceptTopicPage: React.FC = () => {
@@ -27,6 +25,8 @@ const AcceptTopicPage: React.FC = () => {
   const [selectedTopicId, setSelectedTopicId] = useState<number | "">("");
 
   const navigate = useNavigate();
+
+  const { getUsersWithoutPasswords } = useAuth();
 
   if (!isTeacherOrResearcher) {
     return (
@@ -52,16 +52,17 @@ const AcceptTopicPage: React.FC = () => {
     (t) => t.status === "Proposed" && t.authorId
   );
 
-  const findUserById = (userId?: number): User | undefined =>
-    mockUsers.find((u) => u.id === userId);
+  console.log(studentProposedTopics);
+  const findUserById = (userId?: number) =>
+    getUsersWithoutPasswords().find((u) => Number(u.id) === Number(userId));
 
   const handleAccept = (thesisId: number, studentId: number) => {
-    acceptThesis(thesisId, currentUser!.id);
+    acceptThesis(thesisId, currentUser!.id, studentId);
 
     // Remove the student's applications from other theses
     const otherTopics = topics.filter((t) => t.id !== thesisId);
     otherTopics.forEach((topic) => {
-      if (topic.studentsApplications?.includes(studentId)) {
+      if (topic.studentsApplications?.includes(Number(studentId))) {
         const updatedApplications = topic.studentsApplications.filter(
           (id) => id !== studentId
         );

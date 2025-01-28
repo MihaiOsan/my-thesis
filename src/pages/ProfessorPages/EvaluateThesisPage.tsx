@@ -39,9 +39,9 @@ const EvaluateThesisPage: React.FC = () => {
   }
 
   const evaluableTheses = topics.filter((t) => t.status === "Completed");
-  const selectedThesis = evaluableTheses.find(
-    (t) => t.id === Number(selectedThesisId)
-  );
+
+  console.log(evaluableTheses);
+  const selectedThesis = evaluableTheses.find((t) => t.id === selectedThesisId);
 
   const handleEvaluate = () => {
     if (selectedThesisId === "") {

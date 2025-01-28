@@ -45,33 +45,16 @@ export interface Thesis {
 export interface ThesisEvaluation {
   grade: number;
   feedback: string;
-  evaluationDate: Date;
+  evaluationDate?: Date;
 }
 
 export interface UploadedDocument {
   id: number; // ID unic al documentului
   name: string; // Numele documentului
   url: string; // URL-ul unde poate fi accesat documentul (de exemplu, într-un sistem de stocare)
-  uploadedAt: Date; // Data și ora încărcării
+  uploadedAt?: Date; // Data și ora încărcării
   uploadedBy: number; // ID-ul utilizatorului care a încărcat documentul
   documentType: "Report" | "Code" | "Presentation" | "Other"; // Tipul documentului
   description?: string; // O scurtă descriere a documentului
 }
 
-export interface Message {
-  id: number;
-  senderId: number; // ID-ul utilizatorului care a trimis mesajul
-  recipientId: number; // ID-ul utilizatorului care primește mesajul
-  thesisId: number; // ID-ul lucrării la care se referă
-  content: string; // Conținutul mesajului
-  timestamp: Date; // Data și ora trimiterii mesajului
-  isRead: boolean; // Dacă a fost citit sau nu
-}
-
-export interface Feedback {
-  id: number;
-  thesisId: number; // ID-ul lucrării la care se referă feedback-ul
-  authorId: number; // ID-ul utilizatorului care a lăsat feedback
-  content: string; // Conținutul feedback-ului
-  createdAt: Date; // Data creării
-}

@@ -1,7 +1,5 @@
-// src/context/AuthContext.tsx
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { User } from "../types/types";
-import { mockUsers } from "../data/mockUsers";
 
 interface AuthContextProps {
   currentUser: User | null;
@@ -15,11 +13,11 @@ interface AuthContextProps {
     password: string,
     role: string
   ) => Promise<boolean>;
+  getUsersWithoutPasswords: () => Omit<User, "password">[];
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
-// Hook pentru a folosi AuthContext
 export function useAuth() {
   const ctx = useContext(AuthContext);
   if (!ctx) {
@@ -31,62 +29,91 @@ export function useAuth() {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // Stocăm lista tuturor utilizatorilor mock
-  const [allUsers, setAllUsers] = useState<User[]>(mockUsers);
-
-  // Stocăm utilizatorul curent (sau null dacă nu e logat)
+  const [allUsers, setAllUsers] = useState<User[]>([]);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  // Funcția de login (exista deja)
+  // Încarcă utilizatorii de la json-server la montare
+  useEffect(() => {
+    fetch("http://localhost:3001/users")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Received users before transformation:", data);
+        const transformedData = data.map((item: User) => {
+          const transformedItem: Partial<User> = {
+            ...item,
+            id: Number(item.id),
+          };
+          Object.keys(transformedItem).forEach((key) => {
+            if (transformedItem[key as keyof User] === null) {
+              transformedItem[key as keyof User] = undefined;
+            }
+          });
+          return transformedItem as User;
+        });
+        console.log("Transformed users:", transformedData);
+        setAllUsers(transformedData);
+      })
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
+
+  const getUsersWithoutPasswords = (): Omit<User, "password">[] => {
+    return allUsers.map(({ password, ...rest }) => rest);
+  };
+
   const login = async (email: string, password: string): Promise<boolean> => {
-    const foundUser = allUsers.find(
-      (u) => u.email === email && u.password === password
+    const response = await fetch(
+      `http://localhost:3001/users?email=${email}&password=${password}`
     );
-    if (foundUser) {
-      setCurrentUser(foundUser);
+    const users = await response.json();
+    if (users.length > 0) {
+      setCurrentUser(users[0]);
       return true;
     }
     return false;
   };
 
-  // Funcția de logout
   const logout = () => {
     setCurrentUser(null);
   };
 
-  // Funcția de signUp (nouă)
   const signUp = async (
     name: string,
     email: string,
     password: string,
     role: string
   ): Promise<boolean> => {
-    // verificăm dacă email-ul există deja
-    const emailExists = allUsers.some((u) => u.email === email);
-    if (emailExists) {
+    const existingUser = allUsers.find((user) => user.email === email);
+    if (existingUser) {
       return false;
     }
 
-    // creăm un user nou
     const newUser: User = {
-      id: Date.now(), // ID mock
+      id: Date.now(), // Transmit ID-ul ca string
       name,
       email,
       password,
       role: role as "student" | "teacher" | "researcher" | "admin",
     };
 
-    // îl adăugăm în listă
-    setAllUsers((prev) => [...prev, newUser]);
-    // logăm userul imediat după signUp
-    setCurrentUser(newUser);
-    return true;
+    const response = await fetch("http://localhost:3001/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+      const createdUser = await response.json();
+      setAllUsers((prev) => [...prev, createdUser]);
+      setCurrentUser(createdUser);
+      return true;
+    }
+
+    return false;
   };
 
-  // isAuthenticated
   const isAuthenticated = !!currentUser;
-
-  // isTeacherOrResearcher
   const isTeacherOrResearcher =
     currentUser?.role === "teacher" || currentUser?.role === "researcher";
 
@@ -97,6 +124,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     isAuthenticated,
     isTeacherOrResearcher,
     signUp,
+    getUsersWithoutPasswords,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

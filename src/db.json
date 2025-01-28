@@ -1,0 +1,476 @@
+{
+  "theses": [
+    {
+      "id": "101",
+      "title": "Sistem de recomandări cu AI",
+      "description": "Acest proiect de licență își propune dezvoltarea unui sistem de recomandări bazat pe inteligență artificială, capabil să analizeze comportamentele utilizatorilor și să sugereze conținut personalizat. Proiectul va utiliza algoritmi avansați de machine learning pentru a îmbunătăți precizia și relevanța recomandărilor, oferind utilizatorilor o experiență adaptată nevoilor și preferințelor lor. Prin combinarea tehnicilor de filtrare colaborativă și de filtrare bazată pe conținut, sistemul va putea învăța din datele existente, adaptându-se în timp real la schimbările de comportament. De asemenea, proiectul va include o componentă de evaluare a performanței, pentru a compara acuratețea recomandărilor generate de diferiți algoritmi.",
+      "authorId": "2",
+      "supervisorId": "4",
+      "proposedBy": "4",
+      "imageUrl": "https://drmcnatty.com/wp-content/uploads/2024/10/AI2.webp",
+      "status": "Graded",
+      "documents": [
+        {
+          "id": "2",
+          "name": "Cerere acceptare.pdf",
+          "url": "https://example.com/documents/2",
+          "uploadedAt": "2025-01-12T00:00:00.000Z",
+          "uploadedBy": "2",
+          "documentType": "Other",
+          "description": "Cererea de acceptare pentru proiect"
+        },
+        {
+          "id": "1",
+          "name": "Proiect initial.docx",
+          "url": "https://example.com/documents/1",
+          "uploadedAt": "2025-01-1T00:00:00.000Z",
+          "uploadedBy": "2",
+          "documentType": "Report",
+          "description": "Documentul inițial al proiectului"
+        }
+      ],
+      "level": "Undergraduate",
+      "proposalDate": "2025-01-01T00:00:00.000Z",
+      "requiredTechnologies": [
+        "Python",
+        "TensorFlow",
+        "Docker"
+      ],
+      "prerequisites": [
+        "AI Basics",
+        "Data Science"
+      ],
+      "evaluation": {
+        "grade": "9",
+        "evaluationDate": "2025-01-01T00:00:00.000Z",
+        "feedback": "good"
+      }
+    },
+    {
+      "id": "102",
+      "title": "Analiza Big Data pentru e-learning 2",
+      "description": "Disertația își propune explorarea aprofundată a tehnologiilor de big data și a modului în care acestea pot transforma experiența utilizatorilor în platformele de e-learning. Prin integrarea unor soluții scalabile, precum Hadoop și Apache Spark, proiectul analizează metode eficiente de colectare, stocare și procesare a volumelor mari de date generate de studenți și profesori. De asemenea, se pune accent pe identificarea modelelor de învățare, a preferințelor de studiu și a nivelului de progres al fiecărui utilizator. Rezultatul acestui studiu va consta într-un set de recomandări și bune practici pentru personalizarea conținutului educațional, precum și într-o serie de prototipuri care demonstrează cum big data poate sprijini deciziile pedagogice și strategice în mediile de e-learning moderne.",
+      "authorId": 1738064617490,
+      "supervisorId": "4",
+      "proposedBy": "4",
+      "status": "Accepted",
+      "imageUrl": "https://ailleron.com/wp-content/uploads/2024/01/big-data-in-banking.jpg",
+      "documents": [
+        {
+          "id": "1",
+          "name": "Proiect initial.docx",
+          "url": "https://example.com/documents/1",
+          "uploadedBy": 2,
+          "documentType": "Report",
+          "description": "Documentul inițial al proiectului"
+        },
+        {
+          "id": "2",
+          "name": "Cerere acceptare.pdf",
+          "url": "https://example.com/documents/2",
+          "uploadedBy": 2,
+          "documentType": "Other",
+          "description": "Cererea de acceptare pentru proiect"
+        }
+      ],
+      "level": "Masters",
+      "proposalDate": "2025-02-15T00:00:00.000Z",
+      "requiredTechnologies": [
+        "Hadoop",
+        "Spark",
+        "Scala"
+      ],
+      "prerequisites": [
+        "Big Data Fundamentals",
+        "Distributed Computing"
+      ],
+      "studentsApplications": [
+        "1738064617490"
+      ]
+    },
+    {
+      "id": "103",
+      "title": "Proiect de cercetare în Deep Learning",
+      "description": "Acest proiect explorează utilizarea tehnicilor avansate de deep learning pentru a dezvolta soluții eficiente de clasificare a imaginilor. Prin implementarea și optimizarea rețelelor neuronale convoluționale (CNN), proiectul își propune să demonstreze cum pot fi obținute rezultate de înaltă precizie în sarcini complexe de recunoaștere vizuală. Studiul va include atât abordări bine cunoscute, cum ar fi utilizarea arhitecturilor pre-antrenate, cât și experimentarea cu arhitecturi personalizate. Totodată, proiectul va analiza modul în care hiperparametrii, augmentarea datelor și strategiile de regularizare influențează performanța modelului. Rezultatele așteptate vor contribui la o mai bună înțelegere a avantajelor și limitărilor rețelelor convoluționale în domeniul clasificării imaginilor și vor oferi un punct de plecare solid pentru cercetări viitoare în acest domeniu.",
+      "authorId": "2",
+      "supervisorId": "1",
+      "proposedBy": "2",
+      "status": "Accepted",
+      "documents": [
+        {
+          "id": "3",
+          "name": "Prezentare finala.pptx",
+          "url": "https://example.com/documents/3",
+          "uploadedAt": "2025-01-15T00:00:00.000Z",
+          "uploadedBy": "2",
+          "documentType": "Presentation",
+          "description": "Prezentare finală pentru proiect"
+        }
+      ],
+      "level": "PhD",
+      "proposalDate": "2025-03-01T00:00:00.000Z",
+      "requiredTechnologies": [
+        "PyTorch",
+        "OpenCV",
+        "Jupyter"
+      ],
+      "prerequisites": [
+        "Advanced Machine Learning",
+        "Computer Vision Basics"
+      ]
+    },
+    {
+      "id": "114",
+      "title": "Optimizarea proceselor industriale cu algoritmi genetici",
+      "description": "Acest proiect analizează aplicarea algoritmilor genetici în optimizarea proceselor industriale, punând accent pe îmbunătățirea eficienței și reducerea costurilor de producție. Folosind tehnici inspirate din biologia evolutivă, precum selecția, mutația și recombinarea, proiectul își propune să identifice soluții optime pentru probleme complexe, cum ar fi programarea liniilor de asamblare, alocarea resurselor sau reducerea deșeurilor. Proiectul va include dezvoltarea unui model de simulare a proceselor industriale, implementarea algoritmilor genetici și evaluarea performanței acestora în comparație cu metodele tradiționale. Rezultatele așteptate vor oferi o perspectivă clară asupra beneficiilor utilizării algoritmilor genetici în producție, evidențiind potențialul lor de a transforma procesele industriale moderne.",
+      "authorId": "5",
+      "supervisorId": "4",
+      "proposedBy": "4",
+      "status": "In Progress",
+      "documents": [
+        {
+          "id": "1",
+          "name": "Proiect initial.docx",
+          "url": "https://example.com/documents/1",
+          "uploadedAt": "2025-01-10T00:00:00.000Z",
+          "uploadedBy": "4",
+          "documentType": "Report",
+          "description": "Documentul inițial al proiectului"
+        }
+      ],
+      "level": "Masters",
+      "proposalDate": "2025-01-10T00:00:00.000Z",
+      "requiredTechnologies": [
+        "MATLAB",
+        "Python",
+        "Simulink",
+        "DEAP"
+      ],
+      "prerequisites": [
+        "Optimization Basics",
+        "Genetic Algorithms"
+      ]
+    },
+    {
+      "id": "115",
+      "title": "Simularea fluxurilor de trafic urban",
+      "description": "Proiectul își propune să dezvolte un cadru tehnic pentru modelarea și simularea fluxurilor de trafic urban, utilizând tehnologii moderne de simulare și analiză a datelor. Prin implementarea unor modele de simulare bazate pe principii de teorie a grafurilor și algoritmi de optimizare a traseelor, proiectul va evalua scenarii complexe de mobilitate în orașele inteligente. Vor fi utilizate tehnici avansate de simulare agent-based pentru a replica comportamentul vehiculelor individuale, precum și metode de simulare macroscopică pentru a analiza fluxurile generale de trafic. Datele de intrare vor include statistici reale de trafic, precum și parametri sintetici care reflectă condiții diverse, cum ar fi închiderea anumitor rute, creșterea bruscă a cererii în anumite zone sau integrarea transportului public cu vehicule autonome. Rezultatele proiectului vor consta într-un set de instrumente și rapoarte care pot fi utilizate pentru optimizarea fluxurilor de trafic, reducerea congestiilor și îmbunătățirea accesibilității urbane în orașele viitorului.",
+      "authorId": "8",
+      "proposedBy": "8",
+      "status": "Accepted",
+      "documents": [
+        {
+          "id": "1",
+          "name": "DescriereDetaliata.docx",
+          "url": "https://example.com/documents/1",
+          "uploadedAt": "2025-01-10T00:00:00.000Z",
+          "uploadedBy": "8",
+          "documentType": "Report",
+          "description": "Documentul inițial al proiectului"
+        }
+      ],
+      "level": "Undergraduate",
+      "proposalDate": "2025-02-01T00:00:00.000Z",
+      "requiredTechnologies": [
+        "AnyLogic",
+        "Python",
+        "GIS"
+      ],
+      "prerequisites": [
+        "Simulation Basics",
+        "Transportation Engineering"
+      ],
+      "proposedTo": "4",
+      "supervisorId": "4"
+    },
+    {
+      "id": "116",
+      "title": "Analiza predicțiilor financiare",
+      "description": "Proiectul de disertație își propune să analizeze diverse modele matematice și statistice utilizate în predicția piețelor financiare, cu scopul de a identifica metode eficiente de anticipare a tendințelor și a fluctuațiilor de preț. Vor fi examinate atât abordări clasice, cum ar fi modelele ARIMA și GARCH, cât și tehnici moderne bazate pe machine learning, inclusiv rețele neuronale recurente (RNN), modele de tip long short-term memory (LSTM) și metode ensemble. Pe lângă dezvoltarea și calibrarea acestor modele, proiectul va include o analiză comparativă a performanței lor pe date reale din piața de capital, evaluând atât acuratețea predicțiilor, cât și robustețea față de condițiile de piață volatile. Rezultatele obținute vor oferi perspective valoroase asupra aplicabilității diferitelor metode de predicție și vor contribui la înțelegerea mai profundă a factorilor care influențează performanța acestor modele.",
+      "authorId": null,
+      "supervisorId": "7",
+      "proposedBy": "7",
+      "status": "Proposed",
+      "documents": [
+        {
+          "id": "1",
+          "name": "DescriereDetaliata.docx",
+          "url": "https://example.com/documents/1",
+          "uploadedAt": "2025-01-10T00:00:00.000Z",
+          "uploadedBy": "7",
+          "documentType": "Report",
+          "description": "Documentul inițial al proiectului"
+        }
+      ],
+      "level": "Masters",
+      "proposalDate": "2025-05-10T00:00:00.000Z",
+      "requiredTechnologies": [
+        "R",
+        "Shiny",
+        "ggplot2"
+      ],
+      "prerequisites": [
+        "Econometrics",
+        "Time Series Analysis"
+      ]
+    },
+    {
+      "id": "117",
+      "title": "Sistem distribuit de procesare video",
+      "description": "Proiectul se concentrează pe dezvoltarea unui sistem distribuit capabil să proceseze fluxuri video în timp real, folosind o arhitectură scalabilă și rezilientă. Pentru a atinge acest obiectiv, vor fi utilizate tehnologii de streaming precum Kafka sau Apache Pulsar, împreună cu cadre de procesare paralelă și distribuită, cum ar fi Apache Flink sau Spark Streaming. Sistemul va fi proiectat astfel încât să gestioneze multiple surse de intrare video, să aplice diferite algoritmi de prelucrare, inclusiv detectarea obiectelor, recunoașterea facială și analiza de mișcare, și să livreze rezultatele într-un timp cât mai redus. Pe parcursul dezvoltării, se vor aborda provocări precum latența scăzută, scalabilitatea orizontală, echilibrarea încărcării și recuperarea rapidă în cazul erorilor. Rezultatul final va fi un prototip demonstrativ care poate fi extins pentru aplicații comerciale, cum ar fi monitorizarea inteligentă a traficului, analiza comportamentală în retail sau supravegherea securizată a spațiilor publice.",
+      "authorId": null,
+      "supervisorId": "10",
+      "proposedBy": "10",
+      "status": "Proposed",
+      "documents": [],
+      "level": "Masters",
+      "proposalDate": "2025-06-15T00:00:00.000Z",
+      "requiredTechnologies": [
+        "OpenCV",
+        "Kafka",
+        "Docker"
+      ],
+      "prerequisites": [
+        "Distributed Systems",
+        "Video Processing"
+      ]
+    },
+    {
+      "id": "118",
+      "title": "Aplicații IoT pentru monitorizarea mediului",
+      "description": "Proiectul investighează utilizarea tehnologiilor IoT pentru a construi soluții eficiente de monitorizare a factorilor de mediu. Prin integrarea unei rețele de senzori conectați la internet, se vor colecta în timp real date despre temperatură, umiditate, calitatea aerului, nivelul de poluare fonică și alți parametri critici. Dispozitivele IoT utilizate vor include senzori low-power, gateway-uri pentru transmiterea datelor și platforme cloud pentru stocare și analiză. De asemenea, proiectul va examina protocoale de comunicare specifice IoT, precum MQTT și CoAP, pentru a asigura o transmisie eficientă a datelor în rețele dense. Studiul va evalua mai multe abordări de preprocesare și agregare a datelor la marginea rețelei (edge computing), precum și metode de vizualizare și interpretare a rezultatelor într-un dashboard intuitiv. Rezultatul final va fi un sistem demonstrativ, capabil să sprijine factorii de decizie în monitorizarea și îmbunătățirea condițiilor de mediu, cu aplicații în agricultură de precizie, gestionarea resurselor naturale și optimizarea zonelor urbane pentru un trai mai sustenabil.",
+      "authorId": "3",
+      "supervisorId": "4",
+      "proposedBy": "4",
+      "status": "Accepted",
+      "imageUrl": "https://htssgroup.eu/wp-content/uploads/2023/05/10.png",
+      "studentsApplications": [
+        3,
+        5
+      ],
+      "documents": [],
+      "level": "Undergraduate",
+      "proposalDate": "2025-07-20T00:00:00.000Z",
+      "requiredTechnologies": [
+        "Arduino",
+        "Node.js",
+        "InfluxDB"
+      ],
+      "prerequisites": [
+        "IoT Fundamentals",
+        "Environmental Science"
+      ]
+    },
+    {
+      "id": "119",
+      "title": "Metode de clustering pentru date genetice",
+      "description": "Proiectul își propune să studieze și să aplice tehnici avansate de clustering pentru analiza datelor genetice complexe. Utilizând abordări de învățare nesupervizată, precum k-means, clustering ierarhic și metode de tip density-based, cercetarea se va concentra pe identificarea structurilor latente și a grupurilor naturale din seturile mari de date genomice. Acest demers va implica preprocesarea datelor pentru a reduce zgomotul și a normaliza măsurătorile, selectarea metricilor de distanță adecvate și utilizarea tehnicilor de reducere a dimensionalității, cum ar fi PCA (Principal Component Analysis) sau t-SNE, pentru a vizualiza mai clar relațiile dintre clustere.\n Pe parcursul proiectului, se vor evalua performanțele algoritmilor de clustering pe mai multe seturi de date reale din domeniul biologiei computaționale, cum ar fi date transcriptomice sau proteomice, și se vor analiza criteriile de validare internă (silhouette score, Davies-Bouldin index) și externă (comparații cu seturi de referință) pentru a determina calitatea și relevanța grupărilor obținute. Rezultatele obținute vor contribui la o mai bună înțelegere a relațiilor genetice, la descoperirea de markeri genetici potențiali și la identificarea modelelor relevante pentru cercetări viitoare în biologia computațională.",
+      "authorId": null,
+      "supervisorId": "10",
+      "proposedBy": "10",
+      "status": "Proposed",
+      "documents": [],
+      "level": "PhD",
+      "imageUrl": "https://cdn.prod.website-files.com/632705903009591ae033f8d5/63dbb0fb6bac400f64b72a4a_Clustering%20(1).jpg",
+      "proposalDate": "2025-09-30T00:00:00.000Z",
+      "requiredTechnologies": [
+        "R",
+        "Bioconductor",
+        "t-SNE"
+      ],
+      "prerequisites": [
+        "Biostatistics",
+        "Genomics Data Analysis"
+      ]
+    },
+    {
+      "id": "120",
+      "title": "Rețele neuronale pentru detectarea fraudelor",
+      "description": "Acest proiect de cercetare are drept scop dezvoltarea unor modele avansate de rețele neuronale pentru a detecta fraudele online în mod precis și eficient. Pe măsură ce tranzacțiile online devin tot mai numeroase și variate, metodele convenționale de detectare a fraudelor întâmpină limite în fața tiparelor sofisticate de atacuri. Prin aplicarea rețelelor neuronale adânci, proiectul explorează moduri inovatoare de a descoperi anomalii în date financiare și comportamentale, identificând în timp real tranzacțiile suspecte.\nModelarea include utilizarea unor arhitecturi de rețele neuronale recursiv-convoluționale (RCNN), auto-encoderi și rețele neuronale dense pentru a învăța caracteristici complexe din datele istorice și a prezice riscul de fraudă. Proiectul analizează impactul selecției caracteristicilor, optimizarea hiperparametrilor și regularizarea asupra performanței modelului. De asemenea, sunt integrate metode de validare și evaluare pentru a măsura acuratețea, rata de fals pozitive și timpul de răspuns al modelelor.",
+      "authorId": null,
+      "supervisorId": 7,
+      "proposedBy": 7,
+      "status": "Proposed",
+      "imageUrl": "https://i0.wp.com/spd.tech/wp-content/uploads/2023/01/Credit-Card-Fraud-Detection-Using-Machine-Learning.webp?fit=4000%2C2040&ssl=1",
+      "documents": [],
+      "level": "Masters",
+      "proposalDate": "2025-08-25T00:00:00.000Z",
+      "requiredTechnologies": [
+        "PyTorch",
+        "NumPy",
+        "Flask"
+      ],
+      "prerequisites": [
+        "Deep Learning Basics",
+        "Fraud Detection Techniques"
+      ]
+    },
+    {
+      "id": "121",
+      "title": "Automatizarea proceselor logistice",
+      "description": "Acest proiect analizează utilizarea tehnicilor de inteligență artificială și învățare automată pentru a automatiza și optimiza procesele logistice. Se pune accent pe dezvoltarea unor algoritmi care să îmbunătățească planificarea traseelor, alocarea resurselor și gestionarea stocurilor în mod eficient. Proiectul urmărește să reducă costurile operaționale, să minimizeze timpii de livrare și să crească precizia în prognozarea cererilor viitoare.\nVor fi investigate modele de predicție pentru volumele de marfă, algoritmi de optimizare a traseelor vehiculelor și soluții automate pentru realocarea stocurilor în funcție de cerere și de condițiile pieței. În plus, vor fi analizate tehnici de simulare a fluxurilor de logistică pentru a identifica punctele slabe și a testa diferite scenarii de optimizare înainte de implementarea efectivă. Pe lângă dezvoltarea teoretică, proiectul va include și implementarea practică a unui prototip care poate fi utilizat ca bază pentru soluții logistice scalabile și flexibile.",
+      "authorId": null,
+      "supervisorId": "4",
+      "proposedBy": "4",
+      "status": "Proposed",
+      "documents": [],
+      "level": "Masters",
+      "proposalDate": "2025-04-05T00:00:00.000Z",
+      "requiredTechnologies": [
+        "Python",
+        "Pandas",
+        "Scikit-learn"
+      ],
+      "prerequisites": [
+        "Machine Learning Fundamentals",
+        "Operations Research"
+      ]
+    },
+    {
+      "id": "1738065942860",
+      "title": "s",
+      "description": "s",
+      "authorId": "1738065928318",
+      "status": "Accepted",
+      "level": "Undergraduate",
+      "proposedBy": "1738065928318",
+      "requiredTechnologies": [
+        "s"
+      ],
+      "prerequisites": [
+        "s"
+      ],
+      "imageUrl": "https://crc.losrios.edu/crc/main/img/body-misc/3-academics/cac/business-and-computer-science-body.png",
+      "proposalDate": "2025-01-28T12:05:42.860Z",
+      "proposedTo": "4",
+      "supervisorId": "4"
+    },
+    {
+      "id": "1738084895616",
+      "title": "sda",
+      "description": "sad",
+      "authorId": 1738084875885,
+      "status": "Graded",
+      "level": "Undergraduate",
+      "proposedBy": 1738084875885,
+      "requiredTechnologies": [
+        "das"
+      ],
+      "prerequisites": [
+        "dasd"
+      ],
+      "imageUrl": "https://crc.losrios.edu/crc/main/img/body-misc/3-academics/cac/business-and-computer-science-body.png",
+      "proposalDate": "2025-01-28T17:21:35.616Z",
+      "proposedTo": 4,
+      "supervisorId": "4",
+      "evaluation": {
+        "grade": 4,
+        "feedback": "nu prea ai lucrat",
+        "evaluationDate": "2025-01-28T17:33:02.413Z"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "ana.dumitrescu@univ.ro",
+      "password": "prof123",
+      "role": "teacher",
+      "name": "Prof. Dr. Ana Dumitrescu",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/45.jpg"
+    },
+    {
+      "id": "2",
+      "email": "alex.ionescu@student.univ.ro",
+      "password": "stud123",
+      "role": "student",
+      "name": "Alexandru Ionescu",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "id": "3",
+      "email": "elena.radu@alumni.univ.ro",
+      "password": "absolvent123",
+      "role": "researcher",
+      "name": "Elena Radu",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/66.jpg"
+    },
+    {
+      "id": "4",
+      "email": "mihai.popescu@univ.ro",
+      "password": "prof456",
+      "role": "teacher",
+      "name": "Prof. Dr. Mihai Popescu",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/40.jpg"
+    },
+    {
+      "id": "5",
+      "email": "catalina.marin@univ.ro",
+      "password": "stud456",
+      "role": "student",
+      "name": "Cătălina Marin",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/25.jpg"
+    },
+    {
+      "id": "6",
+      "email": "adrian.neacsu@alumni.univ.ro",
+      "password": "absolvent456",
+      "role": "researcher",
+      "name": "Adrian Neacșu",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/55.jpg"
+    },
+    {
+      "id": "7",
+      "email": "florin.cozma@univ.ro",
+      "password": "prof789",
+      "role": "teacher",
+      "name": "Prof. Dr. Florin Cozma",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/50.jpg"
+    },
+    {
+      "id": "8",
+      "email": "bianca.stefan@student.univ.ro",
+      "password": "stud789",
+      "role": "student",
+      "name": "Bianca Ștefan",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/20.jpg"
+    },
+    {
+      "id": "9",
+      "email": "dan.pavel@alumni.univ.ro",
+      "password": "absolvent789",
+      "role": "researcher",
+      "name": "Dan Pavel",
+      "avatarUrl": "https://randomuser.me/api/portraits/men/70.jpg"
+    },
+    {
+      "id": "10",
+      "email": "ioana.cristea@univ.ro",
+      "password": "prof101",
+      "role": "teacher",
+      "name": "Prof. Dr. Ioana Cristea",
+      "avatarUrl": "https://randomuser.me/api/portraits/women/60.jpg"
+    },
+    {
+      "id": "1738064617490",
+      "name": "s",
+      "email": "s@s.s",
+      "password": "s",
+      "role": "student"
+    },
+    {
+      "id": "1738065928318",
+      "name": "ss",
+      "email": "ss@s.s",
+      "password": "s",
+      "role": "student"
+    },
+    {
+      "id": 1738084875885,
+      "name": "s@s.s",
+      "email": "sss@s.s",
+      "password": "s",
+      "role": "student"
+    }
+  ]
+}

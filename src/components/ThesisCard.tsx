@@ -9,8 +9,8 @@ import {
   Stack,
   Button,
 } from "@mui/material";
-import { mockUsers } from "../data/mockUsers";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 interface ThesisCardProps {
   thesis: Thesis;
@@ -19,13 +19,21 @@ interface ThesisCardProps {
 const ThesisCard: React.FC<ThesisCardProps> = ({ thesis }) => {
   const navigate = useNavigate();
 
+  const { getUsersWithoutPasswords } = useAuth();
+
   // Găsim studentul (autorul) și coordonatorul
   const studentUser = useMemo(
-    () => mockUsers.find((u) => u.id === thesis.authorId),
+    () =>
+      getUsersWithoutPasswords().find(
+        (u) => Number(u.id) === Number(thesis.authorId)
+      ),
     [thesis.authorId]
   );
   const supervisorUser = useMemo(
-    () => mockUsers.find((u) => u.id === thesis.supervisorId),
+    () =>
+      getUsersWithoutPasswords().find(
+        (u) => Number(u.id) === Number(thesis.supervisorId)
+      ),
     [thesis.supervisorId]
   );
 

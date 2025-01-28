@@ -80,9 +80,11 @@ const GradesPage: React.FC = () => {
                         </Typography>
                         <Typography variant="body1" sx={{ mb: 1 }}>
                           <strong>Data evaluării:</strong>{" "}
-                          {new Date(
-                            topic.evaluation.evaluationDate
-                          ).toLocaleDateString()}
+                          {topic.evaluation?.evaluationDate
+                            ? new Date(
+                                topic.evaluation.evaluationDate
+                              ).toLocaleDateString()
+                            : "Data indisponibilă"}
                         </Typography>
                         <Typography variant="body1" sx={{ mb: 1 }}>
                           <strong>Review:</strong> {topic.evaluation.feedback}

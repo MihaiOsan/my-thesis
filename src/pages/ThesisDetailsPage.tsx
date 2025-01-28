@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTopics } from "../context/TopicsContext";
-import { mockUsers } from "../data/mockUsers";
 import { useAuth } from "../context/AuthContext";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EditIcon from "@mui/icons-material/Edit";
@@ -34,6 +33,8 @@ const ThesisDetailsPage: React.FC = () => {
 
   const navigate = useNavigate();
 
+  const { getUsersWithoutPasswords } = useAuth();
+
   if (!thesis) {
     return (
       <Container sx={{ marginTop: 4 }}>
@@ -44,8 +45,12 @@ const ThesisDetailsPage: React.FC = () => {
     );
   }
 
-  const studentUser = mockUsers.find((u) => u.id === thesis.authorId);
-  const supervisorUser = mockUsers.find((u) => u.id === thesis.supervisorId);
+  const studentUser = getUsersWithoutPasswords().find(
+    (u) => Number(u.id) === Number(thesis.authorId)
+  );
+  const supervisorUser = getUsersWithoutPasswords().find(
+    (u) => Number(u.id) === Number(thesis.supervisorId)
+  );
 
   // Functions for buttons
   const handleApply = () => {
@@ -74,7 +79,7 @@ const ThesisDetailsPage: React.FC = () => {
   };
 
   const handleAccept = () => {
-    acceptThesis(thesis.id, currentUser!.id);
+    acceptThesis(thesis.id, currentUser!.id, thesis.authorId!);
     alert("Lucrarea a fost acceptată.");
   };
 
@@ -87,6 +92,7 @@ const ThesisDetailsPage: React.FC = () => {
     if (confirmed) {
       deleteTopic(thesis.id);
       alert("Tema a fost ștearsă.");
+      navigate("/");
     }
   };
 
@@ -159,14 +165,20 @@ const ThesisDetailsPage: React.FC = () => {
           sx={{
             display: "block",
             width: "100%",
-            maxHeight: "300px",
-            objectFit: "contain",
+            maxHeight: "350px",
+            objectFit: "cover",
             marginBottom: 4,
             borderRadius: 1,
+            boxShadow: 3,
           }}
         />
         {/* Title */}
-        <Typography variant="h4" gutterBottom align="center">
+        <Typography
+          variant="h4"
+          gutterBottom
+          align="center"
+          sx={{ fontWeight: 700, color: "primary.main" }}
+        >
           {thesis.title}
         </Typography>
         {/* Description */}
@@ -181,7 +193,7 @@ const ThesisDetailsPage: React.FC = () => {
             <Stack direction="row" spacing={2} alignItems="center">
               <Avatar src={studentUser.avatarUrl} alt={studentUser.name} />
               <Typography>
-                <strong>Propus de:</strong> {studentUser.name}
+                <strong>Student:</strong> {studentUser.name}
               </Typography>
             </Stack>
           )}
@@ -266,7 +278,9 @@ const ThesisDetailsPage: React.FC = () => {
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
                       Încărcat de userul cu ID {doc.uploadedBy} la{" "}
-                      {doc.uploadedAt.toLocaleDateString()}
+                      {doc.uploadedAt
+                        ? new Date(doc.uploadedAt).toLocaleDateString()
+                        : "Data necunoscută"}
                     </Typography>
                   </Box>
                   <Box>
@@ -318,7 +332,9 @@ const ThesisDetailsPage: React.FC = () => {
 
             {currentUser.role === "student" &&
               thesis.authorId === currentUser.id &&
-              thesis.supervisorId && (
+              thesis.supervisorId &&
+              thesis.status !== "Completed" &&
+              thesis.status !== "Graded" && (
                 <Button
                   variant="outlined"
                   color="error"
@@ -368,7 +384,9 @@ const ThesisDetailsPage: React.FC = () => {
               {/* Butonul pentru încărcarea documentelor */}
               {currentUser &&
                 (thesis.supervisorId === currentUser.id ||
-                  thesis.authorId === currentUser.id) && (
+                  thesis.authorId === currentUser.id) &&
+                thesis.status !== "Completed" &&
+                thesis.status !== "Graded" && (
                   <Button
                     variant="contained"
                     color="secondary"
@@ -385,7 +403,9 @@ const ThesisDetailsPage: React.FC = () => {
 
               {currentUser.role === "student" &&
                 thesis.authorId === currentUser.id &&
-                thesis.supervisorId && (
+                thesis.supervisorId &&
+                thesis.status !== "Completed" &&
+                thesis.status !== "Graded" && (
                   <Button
                     variant="contained"
                     color="primary"
@@ -402,7 +422,9 @@ const ThesisDetailsPage: React.FC = () => {
 
               {currentUser.role === "teacher" &&
                 thesis.supervisorId === currentUser.id &&
-                !thesis.authorId && (
+                !thesis.authorId &&
+                thesis.status !== "Completed" &&
+                thesis.status !== "Graded" && (
                   <Button
                     variant="contained"
                     color="primary"
