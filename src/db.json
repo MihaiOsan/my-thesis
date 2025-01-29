@@ -126,7 +126,7 @@
       "authorId": "5",
       "supervisorId": "4",
       "proposedBy": "4",
-      "status": "In Progress",
+      "status": "Graded",
       "documents": [
         {
           "id": "1",
@@ -149,7 +149,12 @@
       "prerequisites": [
         "Optimization Basics",
         "Genetic Algorithms"
-      ]
+      ],
+      "evaluation": {
+        "grade": 10,
+        "feedback": "Foarte bine ",
+        "evaluationDate": "2025-01-29T22:29:12.221Z"
+      }
     },
     {
       "id": "115",
@@ -233,6 +238,9 @@
       "prerequisites": [
         "Distributed Systems",
         "Video Processing"
+      ],
+      "studentsApplications": [
+        "1738158967640"
       ]
     },
     {
@@ -309,10 +317,10 @@
       "id": "121",
       "title": "Automatizarea proceselor logistice",
       "description": "Acest proiect analizează utilizarea tehnicilor de inteligență artificială și învățare automată pentru a automatiza și optimiza procesele logistice. Se pune accent pe dezvoltarea unor algoritmi care să îmbunătățească planificarea traseelor, alocarea resurselor și gestionarea stocurilor în mod eficient. Proiectul urmărește să reducă costurile operaționale, să minimizeze timpii de livrare și să crească precizia în prognozarea cererilor viitoare.\nVor fi investigate modele de predicție pentru volumele de marfă, algoritmi de optimizare a traseelor vehiculelor și soluții automate pentru realocarea stocurilor în funcție de cerere și de condițiile pieței. În plus, vor fi analizate tehnici de simulare a fluxurilor de logistică pentru a identifica punctele slabe și a testa diferite scenarii de optimizare înainte de implementarea efectivă. Pe lângă dezvoltarea teoretică, proiectul va include și implementarea practică a unui prototip care poate fi utilizat ca bază pentru soluții logistice scalabile și flexibile.",
-      "authorId": null,
+      "authorId": "1738158967640",
       "supervisorId": "4",
       "proposedBy": "4",
-      "status": "Proposed",
+      "status": "Accepted",
       "documents": [],
       "level": "Masters",
       "proposalDate": "2025-04-05T00:00:00.000Z",
@@ -324,50 +332,29 @@
       "prerequisites": [
         "Machine Learning Fundamentals",
         "Operations Research"
+      ],
+      "studentsApplications": [
+        "1738158967640"
       ]
     },
     {
-      "id": "1738065942860",
-      "title": "s",
-      "description": "s",
-      "authorId": "1738065928318",
-      "status": "Accepted",
-      "level": "Undergraduate",
-      "proposedBy": "1738065928318",
-      "requiredTechnologies": [
-        "s"
-      ],
-      "prerequisites": [
-        "s"
-      ],
-      "imageUrl": "https://crc.losrios.edu/crc/main/img/body-misc/3-academics/cac/business-and-computer-science-body.png",
-      "proposalDate": "2025-01-28T12:05:42.860Z",
-      "proposedTo": "4",
-      "supervisorId": "4"
-    },
-    {
-      "id": "1738084895616",
-      "title": "sda",
-      "description": "sad",
-      "authorId": 1738084875885,
-      "status": "Graded",
-      "level": "Undergraduate",
-      "proposedBy": 1738084875885,
-      "requiredTechnologies": [
-        "das"
-      ],
-      "prerequisites": [
-        "dasd"
-      ],
-      "imageUrl": "https://crc.losrios.edu/crc/main/img/body-misc/3-academics/cac/business-and-computer-science-body.png",
-      "proposalDate": "2025-01-28T17:21:35.616Z",
-      "proposedTo": 4,
+      "id": "1738188874234",
+      "title": "Optimizarea Performanței Aplicațiilor Web prin Tehnici de Caching și Load Balancing",
+      "description": "Proiectul își propune să investigheze și să implementeze soluții eficiente de caching și load balancing pentru a îmbunătăți performanța și scalabilitatea aplicațiilor web moderne. Cercetarea va include metode de caching la nivel de client (browser), caching la nivel de server (Redis, Memcached) și utilizarea de reverse proxies precum Nginx sau Varnish. De asemenea, se va analiza impactul load balancing-ului asupra distribuției traficului, folosind algoritmi de tip round-robin, least connections și weighted load balancing.\\n\\n Proiectul va implica testarea și compararea acestor tehnici pe un set de aplicații reale și va include utilizarea instrumentelor de profiling, precum Lighthouse și WebPageTest, pentru a măsura timpii de răspuns și utilizarea resurselor. Scopul final este de a propune o arhitectură optimizată pentru aplicații web cu trafic ridicat, reducând latența și îmbunătățind experiența utilizatorilor.",
       "supervisorId": "4",
-      "evaluation": {
-        "grade": 4,
-        "feedback": "nu prea ai lucrat",
-        "evaluationDate": "2025-01-28T17:33:02.413Z"
-      }
+      "status": "Proposed",
+      "level": "Masters",
+      "proposedBy": "4",
+      "requiredTechnologies": [
+        "Node.js / Express sau Django / Spring Boot",
+        "Redis / Memcached pentru caching",
+        "Docker și Kubernetes pentru orchestrare"
+      ],
+      "prerequisites": [
+        "Familiarizare cu conceptele de caching și load balancing"
+      ],
+      "imageUrl": "https://sdacademy.ro/sda-assets/uploads/sites/5/2021/10/WEB-DEVELOPMENT-s-1.png",
+      "proposalDate": "2025-01-29T22:14:34.234Z"
     }
   ],
   "users": [
@@ -466,10 +453,17 @@
       "role": "student"
     },
     {
-      "id": 1738084875885,
+      "id": "1738084875885",
       "name": "s@s.s",
       "email": "sss@s.s",
       "password": "s",
+      "role": "student"
+    },
+    {
+      "id": "1738158967640",
+      "name": "a",
+      "email": "a@a.a",
+      "password": "a",
       "role": "student"
     }
   ]

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import {
   ThemeProvider,
   CssBaseline,
@@ -54,6 +60,8 @@ function App() {
     const { currentUser, logout } = useAuth();
     const { topics } = useTopics();
 
+    const navigate = useNavigate();
+
     const userAssignedThesis = topics.find(
       (topic) =>
         topic.authorId === currentUser?.id &&
@@ -61,6 +69,11 @@ function App() {
         topic.status !== "Completed" &&
         topic.status !== "Graded"
     );
+
+    const onLogout = () => {
+      logout();
+      navigate("/");
+    };
 
     const renderMenuItems = () => (
       <List>
@@ -202,7 +215,7 @@ function App() {
                 Login
               </Button>
             ) : (
-              <Button color="inherit" onClick={logout}>
+              <Button color="inherit" onClick={onLogout}>
                 Logout
               </Button>
             )}

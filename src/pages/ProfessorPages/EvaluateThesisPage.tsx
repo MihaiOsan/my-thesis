@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Container,
   Typography,
@@ -24,6 +24,19 @@ const EvaluateThesisPage: React.FC = () => {
   const [selectedThesisId, setSelectedThesisId] = useState<number | "">("");
   const [grade, setGrade] = useState<number>(10);
   const [feedback, setFeedback] = useState("");
+  const { getUsersWithoutPasswords } = useAuth();
+
+  const evaluableTheses = topics.filter((t) => t.status === "Completed");
+
+  const selectedThesis = evaluableTheses.find((t) => t.id === selectedThesisId);
+
+  const studentUser = useMemo(
+    () =>
+      getUsersWithoutPasswords().find(
+        (u) => Number(u.id) === Number(selectedThesis?.authorId)
+      ),
+    [selectedThesis?.authorId]
+  );
 
   if (!isTeacherOrResearcher) {
     return (
@@ -37,11 +50,6 @@ const EvaluateThesisPage: React.FC = () => {
       </Container>
     );
   }
-
-  const evaluableTheses = topics.filter((t) => t.status === "Completed");
-
-  console.log(evaluableTheses);
-  const selectedThesis = evaluableTheses.find((t) => t.id === selectedThesisId);
 
   const handleEvaluate = () => {
     if (selectedThesisId === "") {
@@ -121,15 +129,20 @@ const EvaluateThesisPage: React.FC = () => {
                 <Typography variant="body1">
                   <strong>Titlu:</strong> {selectedThesis.title}
                 </Typography>
+                <p></p>
+
+                <Typography variant="body1">
+                  <strong>Autor:</strong> {studentUser?.name}
+                </Typography>
+                <p />
                 <Typography variant="body1">
                   <strong>Descriere:</strong> {selectedThesis.description}
                 </Typography>
-                <Typography variant="body1">
-                  <strong>Autor:</strong> {selectedThesis.authorId}
-                </Typography>
+                <p />
                 <Typography variant="body1">
                   <strong>Documente:</strong>{" "}
                 </Typography>
+                <p></p>
                 {selectedThesis.documents?.length ? (
                   selectedThesis.documents.map((doc, index) => (
                     <Box

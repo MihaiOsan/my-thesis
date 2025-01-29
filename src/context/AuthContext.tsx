@@ -87,8 +87,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return false;
     }
 
-    const newUser: User = {
-      id: Date.now(), // Transmit ID-ul ca string
+    const newUser = {
+      id: String(Date.now()), // Transmit ID-ul ca string
       name,
       email,
       password,

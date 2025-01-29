@@ -52,7 +52,16 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const addTopic = (newTopic: Thesis) => {
-    const topicToSave = { ...newTopic, id: String(newTopic.id) };
+    const topicToSave = {
+      ...newTopic,
+      id: String(newTopic.id),
+      authorId: newTopic.authorId ? String(newTopic.authorId) : undefined,
+      supervisorId: newTopic.supervisorId
+        ? String(newTopic.supervisorId)
+        : undefined,
+      proposedBy: newTopic.proposedBy ? String(newTopic.proposedBy) : undefined,
+      proposedTo: newTopic.proposedTo ? String(newTopic.proposedTo) : undefined,
+    };
 
     fetch("http://localhost:3001/theses", {
       method: "POST",
@@ -63,7 +72,10 @@ export const TopicsProvider: React.FC<{ children: React.ReactNode }> = ({
     })
       .then((response) => response.json())
       .then((topicToSave) => {
-        setTopics((prev) => [...prev, topicToSave]);
+        setTopics((prev) => [
+          ...prev,
+          { ...topicToSave, id: Number(topicToSave.id) },
+        ]);
       })
       .catch((error) => console.error("Error adding topic:", error));
   };

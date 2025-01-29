@@ -130,8 +130,8 @@ const SignUpPage: React.FC = () => {
                 onChange={(e) => setRole(e.target.value as string)}
               >
                 <MenuItem value="student">Student</MenuItem>
-                <MenuItem value="teacher">Teacher</MenuItem>
-                <MenuItem value="researcher">Researcher</MenuItem>
+                <MenuItem value="teacher">Profesor</MenuItem>
+                <MenuItem value="researcher">Cercetător</MenuItem>
               </Select>
             </FormControl>
 
