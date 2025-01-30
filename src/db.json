@@ -355,6 +355,27 @@
       ],
       "imageUrl": "https://sdacademy.ro/sda-assets/uploads/sites/5/2021/10/WEB-DEVELOPMENT-s-1.png",
       "proposalDate": "2025-01-29T22:14:34.234Z"
+    },
+    {
+      "id": "1738232938532",
+      "title": "Utilizarea rețelelor neuronale convoluționale pentru clasificarea imaginilor medicale",
+      "description": "Proiectul își propune să investigheze aplicabilitatea rețelelor neuronale convoluționale (CNN) în clasificarea imaginilor medicale, cum ar fi radiografiile, tomografiile și imaginile de rezonanță magnetică. Vor fi analizate diferite arhitecturi CNN, precum VGG16, ResNet și EfficientNet, pentru a determina eficiența acestora în detectarea și clasificarea anomaliilor.\\n\\n În cadrul proiectului, se va desfășura un proces riguros de preprocesare a datelor, incluzând augmentarea imaginilor, normalizarea și reducerea zgomotului. Vor fi utilizate baze de date publice precum ChestX-ray14 și HAM10000 pentru antrenarea și validarea modelelor. Performanța rețelelor va fi evaluată folosind metrici specifice, cum ar fi acuratețea, sensibilitatea, specificitatea și AUC-ROC.\\n\\n Scopul final al cercetării este de a identifica cele mai eficiente arhitecturi CNN pentru analiza imaginilor medicale, contribuind la dezvoltarea unor sisteme de asistență medicală bazate pe inteligență artificială.",
+      "authorId": "5",
+      "status": "Proposed",
+      "level": "PhD",
+      "proposedBy": "5",
+      "requiredTechnologies": [
+        "TensorFlow / PyTorch pentru antrenarea CNN",
+        "OpenCV / PIL pentru preprocesarea imaginilor",
+        "Scikit-learn pentru evaluarea performanței modelelor"
+      ],
+      "prerequisites": [
+        "deep learning",
+        "procesarea imaginilor"
+      ],
+      "imageUrl": "https://www.zdnet.com/a/img/resize/28d3f004b94bd200eea41399d2be2fff7505906a/2018/04/13/36c52953-7ab9-4608-a848-71d1d538856e/td-deep-learning.jpg?auto=webp&fit=crop&height=675&width=1200",
+      "proposalDate": "2025-01-30T10:28:58.532Z",
+      "proposedTo": "4"
     }
   ],
   "users": [

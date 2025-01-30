@@ -78,7 +78,7 @@ function App() {
     const renderMenuItems = () => (
       <List>
         <ListItem component={Link} to="/about" button>
-          <ListItemText primary="Acasa" />
+          <ListItemText primary="Despre noi" />
         </ListItem>
 
         <ListItem component={Link} to="/" button>
@@ -144,7 +144,7 @@ function App() {
           {/* Regular buttons for larger screens */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
             <Button color="inherit" component={Link} to="/about">
-              Acasa
+              Despre noi
             </Button>
             <Button color="inherit" component={Link} to="/">
               Lucrări

@@ -313,22 +313,25 @@ const ThesisDetailsPage: React.FC = () => {
             }}
           >
             {/* Butonul de delete în partea stângă */}
-            {currentUser.role === "teacher" &&
+            {((currentUser.role === "teacher" &&
               thesis.supervisorId === currentUser.id &&
-              !thesis.authorId && (
-                <Button
-                  variant="outlined"
-                  color="error"
-                  onClick={handleDelete}
-                  startIcon={<DeleteIcon />}
-                  sx={{
-                    paddingX: 3,
-                    fontSize: "1rem",
-                  }}
-                >
-                  Șterge
-                </Button>
-              )}
+              !thesis.authorId) ||
+              (currentUser.role === "student" &&
+                thesis.authorId === currentUser.id &&
+                !thesis.supervisorId)) && (
+              <Button
+                variant="outlined"
+                color="error"
+                onClick={handleDelete}
+                startIcon={<DeleteIcon />}
+                sx={{
+                  paddingX: 3,
+                  fontSize: "1rem",
+                }}
+              >
+                Șterge
+              </Button>
+            )}
 
             {currentUser.role === "student" &&
               thesis.authorId === currentUser.id &&
@@ -420,9 +423,12 @@ const ThesisDetailsPage: React.FC = () => {
                   </Button>
                 )}
 
-              {currentUser.role === "teacher" &&
+              {((currentUser.role === "teacher" &&
                 thesis.supervisorId === currentUser.id &&
-                !thesis.authorId &&
+                !thesis.authorId) ||
+                (currentUser.role === "student" &&
+                  thesis.authorId === currentUser.id &&
+                  !thesis.supervisorId)) &&
                 thesis.status !== "Completed" &&
                 thesis.status !== "Graded" && (
                   <Button
